@@ -58,3 +58,14 @@ resource "aws_lambda_permission" "apigw" {
    # within the API Gateway REST API.
    source_arn = "${aws_api_gateway_rest_api.examplepy.execution_arn}/*/*"
 }
+
+/*
+$ aws s3 mb s3://bogo-terraform-serverless-examplepy
+make_bucket: bogo-terraform-serverless-examplepy
+
+$ zip examplepy.zip examplepy/lambda_function.py
+adding: examplepy/lambda_function.py (deflated 21%)
+
+$ aws s3 cp examplepy.zip s3://bogo-terraform-serverless-examplepy/
+upload: ./examplepy.zip to s3://bogo-terraform-serverless-examplepy/v1.0.0/examplepy.zip
+*/
